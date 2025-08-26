@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing:border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+        section{
+            height: 440px;
+            width: 300px;
+            border: 2px solid black;
+            background-color: rgb(28,28,28);
+            padding: 20px;
+        }
+        input{
+            height: 100px;
+            width: 100%;
+            background-color: rgb(28, 28, 28);
+            border: none;
+            outline: none;
+            color: white;
+            text-align: right;
+            font-size: 50px;
+            padding-right: 20px;
+        }
+        div{
+            height: 60px;
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+       div>button{
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: rgb(80, 80, 80);
+        color: white;
+        border: none;
+        font-weight: bold;
+
+       }
+       button:hover{
+        background-color: green;
+        transform: scale(1.1);
+       }
+       #zero{
+        height: 50px;
+        width: 120px;
+        border-radius: 30px;
+        text-align: left;
+        padding-left: 20px;
+       }
+       .yellow{
+        background-color: rgb(255,149,0);
+       }
+
+       .grey{
+        background-color: rgb(162, 162, 162);
+        color: rgb(61, 60, 60);
+        font-size: 18px;
+       }
+
+    </style>
+</head>
+<body>
+    <section>
+        <input type="">
+        <div>
+            <button class="grey" id="zero" onclick="clear_everything()">Clear</button>
+            <button class="grey" onclick="remove_oneChar()">&larr;</button>
+            <button onclick="get_button_value(this)" class="yellow">/</button>
+
+        </div>
+        <div>
+            <button onclick="get_button_value(this)" >7</button>
+            <button onclick="get_button_value(this)">8</button>
+            <button onclick="get_button_value(this)">9</button>
+            <button onclick="get_button_value(this)" class="yellow">*</button>
+        </div>
+        <div>
+            <button onclick="get_button_value(this)">4</button>
+            <button onclick="get_button_value(this)">5</button>
+            <button onclick="get_button_value(this)">6</button>
+            <button onclick="get_button_value(this)" class="yellow">-</button>
+        </div>
+        <div>
+            <button onclick="get_button_value(this)">1</button>
+            <button onclick="get_button_value(this)">2</button>
+            <button onclick="get_button_value(this)">3</button>
+            <button onclick="get_button_value(this)" class="yellow">+</button></div>
+        <div>
+            
+            <button onclick="get_button_value(this)" id="zero">0</button>
+            <button onclick="get_button_value(this)">.</button>
+            <button class="yellow" onclick="display_result()">=</button>
+        </div>
+
+    </section>
+
+   <script>
+
+    let result = ""
+
+    function get_button_value(event){
+        console.log(event.innerText)
+        result +=event.innerText
+        document.querySelector('input').value = result
+        console.log('Result: ', result)
+    }
+
+    function display_result(){
+        document.querySelector('input').value = eval(result)
+        result = ''
+    }
+
+    function clear_everything(){
+        result = ''
+        document.querySelector('input').value = result
+    }
+
+    function remove_oneChar(){
+        result = result.slice(0, result.length - 1)
+        document.querySelector('input').value = result
+    }
+
+
+   </script>
+
+   
+    
+</body>
+</html>
